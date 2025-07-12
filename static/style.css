@@ -1,0 +1,231 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    color: #1a253c;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+#url-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#url-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#url-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+button, .button-secondary, .button-download, .back-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#extract-button {
+    background-color: #28a745;
+    margin-top: 20px;
+    width: 100%;
+}
+#extract-button:hover {
+    background-color: #218838;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#status-text {
+    text-align: center;
+    font-weight: 500;
+    color: #555;
+}
+
+.navigation-panel {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.button-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+.button-secondary:hover {
+    background-color: #5a6268;
+}
+
+.history {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.history h3 {
+    text-align: center;
+    color: #444;
+}
+.history ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+.history li {
+    padding: 5px;
+    color: #666;
+}
+
+#analysis-results {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+}
+
+#summary-panel h3 {
+    margin-top: 0;
+    color: #1a253c;
+}
+
+.summary-quote {
+    font-style: italic;
+    color: #555;
+    border-left: 4px solid #007bff;
+    padding-left: 15px;
+    margin: 10px 0 20px 0;
+    font-size: 1.1em;
+}
+
+#category-selection {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+#categories {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#categories label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.back-button {
+    background-color: transparent;
+    color: #007bff;
+    padding: 5px 0;
+    margin-bottom: 20px;
+}
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.url-display {
+    font-family: monospace;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 4px;
+    word-break: break-all;
+}
+
+.result-card {
+    background-color: #fff;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.result-card h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.button-download {
+    background-color: #17a2b8;
+    color: white;
+    float: right;
+    margin-bottom: 10px;
+}
+.button-download:hover {
+    background-color: #138496;
+}
+
+.data-container {
+    clear: both;
+}
+
+.json-formatter-row .json-formatter-string {
+    color: #28a745 !important;
+}

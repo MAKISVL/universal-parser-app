@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Результаты парсинга - ИС Сбора Данных by Maxim Vlasov BVT2355</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/json-formatter-js@2.3.4/dist/json-formatter.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/json-formatter-js@2.3.4/dist/json-formatter.min.css">
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="back-button">← Вернуться на главный экран</a>
+        <h1>Результаты парсинга для:</h1>
+        <p class="url-display">{{ url }}</p>
+
+        {% for category, data_str in results.items() %}
+        <div class="result-card">
+            <h2>Данные: {{ category.capitalize() }}</h2>
+
+            {% if 'error' in data_str %}
+                <p class="error-text">Не удалось извлечь данные: {{ data_str.error }}</p>
+            {% else %}
+                {% if category == 'tables' or category == 'prices' or category == 'contacts' %}
+                    <a href="{{ url_for('download_csv', category=category) }}" class="button-download">Скачать CSV</a>
+                {% elif category == 'images' %}
+                     <a href="{{ url_for('download_images') }}" class="button-download">Скачать ZIP-архив</a>
+                {% endif %}
+
+                <div class="data-container" id="data-{{ category }}"></div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        const resultsData = {{ results|tojson }};
+
+        for (const category in resultsData) {
+            const dataStr = resultsData[category];
+            const container = document.getElementById(`data-${category}`);
+
+            if (!container) continue;
+
+            try {
+                const jsonData = JSON.parse(dataStr);
+                const formatter = new JSONFormatter(jsonData, 2, { theme: 'dark' });
+                container.appendChild(formatter.render());
+            } catch (e) {
+                container.textContent = `Ошибка отображения данных для категории '${category}'.`;
+                console.error(`Ошибка парсинга JSON для '${category}':`, e, "Исходная строка:", dataStr);
+            }
+        }
+    </script>
+</body>
+</html>
