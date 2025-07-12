@@ -85,8 +85,9 @@
                     throw new Error(errorData.error || `Ошибка сервера: ${response.statusText}`);
                 }
                 
-                const resultText = await response.json();
-                const result = JSON.parse(resultText);
+                // ИЗМЕНЕНИЕ ЗДЕСЬ: response.json() уже парсит JSON.
+                // Нет необходимости в повторном JSON.parse().
+                const result = await response.json(); 
 
                 loader.style.display = 'none';
                 statusText.textContent = '';
